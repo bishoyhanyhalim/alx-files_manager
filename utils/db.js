@@ -1,8 +1,8 @@
 #!/usr/bin/node
 
-const { pwdHashed } = require('./utils');
-const mongo = require('mongodb');
 const { MongoClient } = require('mongodb');
+const mongo = require('mongodb');
+const { pwdHashed } = require('./utils');
 
 class DBClient {
   constructor() {
@@ -69,5 +69,4 @@ class DBClient {
 }
 
 const dbClient = new DBClient();
-
 module.exports = dbClient;
