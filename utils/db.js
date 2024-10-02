@@ -5,11 +5,13 @@ const DB_PORT = process.env.DB_PORT || 27017;
 const DB_DATABASE = process.env.DB_DATABASE || 'files_manager';
 const url = `mongodb://${DB_HOST}:${DB_PORT}`;
 
+/**
+ * this is task for db mongo
+ */
 class DBClient {
   constructor() {
     MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
       if (!err) {
-        // console.log('Connected successfully to server');
         this.db = client.db(DB_DATABASE);
         this.usersCollection = this.db.collection('users');
         this.filesCollection = this.db.collection('files');
@@ -20,7 +22,6 @@ class DBClient {
     });
   }
 
-
   isAlive() {
     return Boolean(this.db);
   }
@@ -29,7 +30,6 @@ class DBClient {
     const numberOfUsers = this.usersCollection.countDocuments();
     return numberOfUsers;
   }
-
 
   async nbFiles() {
     const numberOfFiles = this.filesCollection.countDocuments();
