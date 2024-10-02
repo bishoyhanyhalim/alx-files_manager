@@ -8,17 +8,16 @@ function controllerRouting(app) {
   const router = express.Router();
   app.use('/', router);
 
-
+  // return the status final of task
   router.get('/status', (req, res) => {
     AppController.getStatus(req, res);
   });
 
-  // return the final stats
+  // return the stats final of task
   router.get('/stats', (req, res) => {
     AppController.getStats(req, res);
   });
 
-  // return the final user
   router.post('/users', (req, res) => {
     UsersController.postNew(req, res);
   });
@@ -26,7 +25,6 @@ function controllerRouting(app) {
   router.get('/users/me', (req, res) => {
     UsersController.getMe(req, res);
   });
-
 
   router.get('/connect', (req, res) => {
     AuthController.getConnect(req, res);
@@ -36,7 +34,6 @@ function controllerRouting(app) {
     AuthController.getDisconnect(req, res);
   });
 
-
   router.post('/files', (req, res) => {
     FilesController.postUpload(req, res);
   });
@@ -44,7 +41,6 @@ function controllerRouting(app) {
   router.get('/files/:id', (req, res) => {
     FilesController.getShow(req, res);
   });
-
 
   router.get('/files', (req, res) => {
     FilesController.getIndex(req, res);
